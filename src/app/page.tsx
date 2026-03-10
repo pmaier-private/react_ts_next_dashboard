@@ -1,5 +1,6 @@
 import Image from "next/image";
 import UsersComponent from "./users";
+import { UpdateUserForm } from "./users";
 
 export default function Home() {
   return (
@@ -61,6 +62,8 @@ export default function Home() {
           </a>
         </div>
         <UsersComponent />
+        <br></br>
+        <UpdateUserForm userId={3} />
       </main>
     </div>
   );
