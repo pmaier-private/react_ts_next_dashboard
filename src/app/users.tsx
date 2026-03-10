@@ -3,20 +3,27 @@
 import { useEffect, useState } from 'react';
 import { fetchData, User } from './api';
 
+type State =
+    | { status: 'loading' }
+    | { status: 'error'; error: string }
+    | { status: 'success'; data: User[] };
+
 export default function UsersComponent() {
-    const [users, setUsers] = useState<User[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    const [state, setState] = useState<State>({ status: 'loading' });
 
     useEffect(() => {
         fetchData<User[]>("users")
-            .then(data => setUsers(data))
-            .catch(err => setError(err.message))
-            .finally(() => setLoading(false));
+            .then(data => setState({ status: 'success', data }))
+            .catch(err => setState({ 
+                status: 'error', 
+                error: err instanceof Error ? err.message : 'An unknown error occurred' 
+            }))
     }, []);
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error}</p>;
+    if (state.status === 'loading') return <p>Loading...</p>;
+    if (state.status === 'error') return <p>Error: {state.error}</p>;
+
+    const users = state.data;
 
     return (
         <div>
