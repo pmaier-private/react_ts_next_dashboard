@@ -1,24 +1,35 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { fetchData, User } from './api';
+
+interface UsersComponentProps {
+    endpoint?: string;
+}
 
 type State =
     | { status: 'loading' }
     | { status: 'error'; error: string }
     | { status: 'success'; data: User[] };
 
-export default function UsersComponent() {
+export default function UsersComponent({ endpoint = "users" }: UsersComponentProps) {
     const [state, setState] = useState<State>({ status: 'loading' });
 
-    useEffect(() => {
-        fetchData<User[]>("users")
-            .then(data => setState({ status: 'success', data }))
-            .catch(err => setState({ 
+    const fetchUsers = useCallback(async () => {
+        try {
+            const data = await fetchData<User[]>(endpoint);
+            setState({ status: 'success', data });
+        } catch (err) {
+            setState({ 
                 status: 'error', 
                 error: err instanceof Error ? err.message : 'An unknown error occurred' 
-            }))
-    }, []);
+            });
+        }
+    }, [endpoint]);
+
+    useEffect(() => {
+        fetchUsers();
+    }, [fetchUsers]);
 
     if (state.status === 'loading') return <p>Loading...</p>;
     if (state.status === 'error') return <p>Error: {state.error}</p>;
