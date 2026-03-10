@@ -33,6 +33,8 @@ export default function UsersComponent() {
                     <li key={user.id}>{user.name} ({user.email}) -- {user.phone}</li>
                 ))}
             </ul>
+            <br></br>
+            <UpdateUserForm userId={3} />
         </div>
     );
 }
