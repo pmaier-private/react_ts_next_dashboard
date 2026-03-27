@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { fetchFromJsonPlaceholder, User } from "./api";
 import React from "react";
+import Link from "next/link";
 
 interface UsersComponentProps {
     endpoint?: string;
@@ -63,16 +64,16 @@ export default function UsersComponent({
         // with the user's id.
         return users.map((user) => (
             <li key={user.id}>
-                <a
+                <Link
                     href={`?userId=${user.id}`}
-                    className={`block w-full px-4 py-2 rounded ${
+                    className={`block w-full px-4 py-1 rounded ${
                         selectedUserId === user.id
                             ? "border bg-black/[.04]"
                             : "hover:bg-black/[.04]"
                     }`}
                 >
                     <span className="font-medium">{user.name}</span>
-                </a>
+                </Link>
             </li>
         ));
     }, [selectedUserId, users]);
