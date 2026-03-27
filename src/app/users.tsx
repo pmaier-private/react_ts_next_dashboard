@@ -55,9 +55,12 @@ export default function UsersComponent({
 
     const users = state.data;
 
+    // First, build the HTML user list by mapping the users to list items, then
+    // return the list wrapped in `<ul>`. The list is additionally memoized to
+    // avoid unnecessary re-renders when the selected user changes.
     const userList = useMemo(() => {
-        // Map each user in 'users' to a list element with a link parameterized with
-        // the user's id.
+        // Map each user in 'users' to a list element with a link parameterized
+        // with the user's id.
         return users.map((user) => (
             <li key={user.id}>
                 <a
