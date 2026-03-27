@@ -11,12 +11,13 @@ interface HomeProps {
 
 /**
  * Home - Main page component for the dashboard.
- * 
- * Renders the home page with a list of users and user detail sections.
- * Accepts an optional userId query parameter to display details for a selected user.
- * 
+ *
+ * Renders the home page with a list of users and user detail sections. Accepts
+ * an optional userId query parameter to display details for a selected user.
+ *
  * @param {HomeProps} props - Component props
- * @param {Promise<{userId?: string}>} props.searchParams - URL search parameters containing optional userId
+ * @param {Promise<{userId?: string}>} props.searchParams - URL search
+ * parameters containing optional userId
  * @returns {Promise<JSX.Element>} The rendered home page component
  */
 export default async function Home({searchParams}: HomeProps) {
