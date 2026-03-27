@@ -23,6 +23,7 @@ export default async function Home({searchParams}: HomeProps) {
     // const [selectedUserId, setSelectedUserId] = useState(2);
 
     const {userId} = await searchParams;
+    const selectedUserId = userId ? parseInt(userId) : undefined;
 
     return (
         <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
@@ -33,15 +34,18 @@ export default async function Home({searchParams}: HomeProps) {
                     </h1>
                 </div>
                 <UsersComponent
-                    selectedUserId={userId ? parseInt(userId) : undefined}
-                    onUserSelect={undefined}
+                    selectedUserId={selectedUserId}
                 />
                 <section className="grid w-full grid-cols-1 gap-6 md:grid-cols-2">
                     <UserDetail userId={1} title="Pinned User" />
-                    <UserDetail
-                        userId={userId ? parseInt(userId) : undefined}
-                        title="Selected User"
-                    />
+                    {selectedUserId ? (
+                        <UserDetail userId={selectedUserId} title="Selected User" />
+                    ) : (
+                        <div className="rounded-xl border border-zinc-200 p-5">
+                            <h2 className="mb-4 text-lg font-semibold">Selected User</h2>
+                            <p>Select a user from the list.</p>
+                        </div>
+                    )}
                 </section>
             </main>
         </div>
