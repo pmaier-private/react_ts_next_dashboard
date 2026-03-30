@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
-import { fetchFromJsonPlaceholder, isValidUser, type BlogPost, type User } from './api';
+import { fetchFromJsonPlaceholder, isValidUser, type BlogPost, type User } from '../../../src/app/lib/api';
 
 describe('fetchFromJsonPlaceHolder', () => {
     afterEach(() => {
