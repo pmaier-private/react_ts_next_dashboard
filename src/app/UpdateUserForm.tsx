@@ -20,7 +20,7 @@ export default function UpdateUserForm({ userId }: UpdateUserFormProps) {
         }));
     };
 
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.ChangeEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`, {
