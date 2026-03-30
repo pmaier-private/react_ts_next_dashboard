@@ -1,12 +1,11 @@
 import UsersComponent from "./users";
 import UserDetail from "./user_detail";
 
-
 interface HomeProps {
     searchParams: Promise<{
         userId?: string;
     }>;
-};
+}
 
 /**
  * Home - Main page component for the dashboard.
@@ -19,10 +18,10 @@ interface HomeProps {
  * parameters containing optional userId
  * @returns {Promise<JSX.Element>} The rendered home page component
  */
-export default async function Home({searchParams}: HomeProps) {
+export default async function Home({ searchParams }: HomeProps) {
     // const [selectedUserId, setSelectedUserId] = useState(2);
 
-    const {userId} = await searchParams;
+    const { userId } = await searchParams;
     const selectedUserId = userId ? parseInt(userId) : undefined;
 
     return (
@@ -32,17 +31,28 @@ export default async function Home({searchParams}: HomeProps) {
                     <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
                         Paul Maier -- Learning React Dashboard
                     </h1>
+                    <a
+                        className="inline-flex items-center rounded-full border border-zinc-900 bg-zinc-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-zinc-700 dark:border-zinc-100 dark:bg-zinc-100 dark:text-black dark:hover:bg-zinc-300"
+                        href="https://github.com/pmaier-private/react_ts_next_dashboard"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        view github repo of this project
+                    </a>
                 </div>
-                <UsersComponent
-                    selectedUserId={selectedUserId}
-                />
+                <UsersComponent selectedUserId={selectedUserId} />
                 <section className="grid w-full grid-cols-1 gap-6 md:grid-cols-2">
                     <UserDetail userId={1} title="Pinned User" />
                     {selectedUserId ? (
-                        <UserDetail userId={selectedUserId} title="Selected User" />
+                        <UserDetail
+                            userId={selectedUserId}
+                            title="Selected User"
+                        />
                     ) : (
                         <div className="rounded-xl border border-zinc-200 p-5">
-                            <h2 className="mb-4 text-lg font-semibold">Selected User</h2>
+                            <h2 className="mb-4 text-lg font-semibold">
+                                Selected User
+                            </h2>
                             <p>Select a user from the list.</p>
                         </div>
                     )}
