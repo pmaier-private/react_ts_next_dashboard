@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, JSX } from "react";
-import { fetchFromJsonPlaceholder, User } from "./api";
+import { fetchFromJsonPlaceholder, User } from "./lib/api";
 
 type State =
     | { status: "loading" }

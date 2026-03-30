@@ -1,4 +1,4 @@
-import { fetchFromJsonPlaceholder, User } from "./api";
+import { fetchFromJsonPlaceholder, User } from "./lib/api";
 import Link from "next/link";
 import { unstable_cache } from "next/cache";
 import UpdateUserForm from "./UpdateUserForm";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { User } from "./api";
+import { User } from "./lib/api";
 
 // Form state using Partial so users can update only selected fields.
 type UserFormState = Partial<User>;
