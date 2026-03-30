@@ -5,9 +5,11 @@ It features a simple list displaying user information from jsonplaceholder. A de
 
 ## Design
 
-### endpoints of ivoris info API
+### endpoints of data access API
 
+We assume the data layer offers an API for accessing dental data, e.g. extracted from ivoris. Currently that API is not implemented, only mocked.
 
+`/data?startDt;endDt`
 
 ## Learning
 
