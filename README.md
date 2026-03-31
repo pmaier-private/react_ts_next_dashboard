@@ -5,11 +5,16 @@ It features a simple list displaying user information from jsonplaceholder. A de
 
 ## Design
 
-### endpoints of data access API
+### endpoint of data access API
 
 We assume the data layer offers an API for accessing dental data, e.g. extracted from ivoris. Currently that API is not implemented, only mocked.
 
 `/data?startDt=<start date time as epoch millis>;endDt = <end time as epoch millis>`
+
+### chat window
+
+- chat interaction is on the client
+- llm invokation is done on the server, called via route / endpoint to be more portable
 
 ## Learning
 
@@ -62,6 +67,10 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+
+## TODOs
+
+- invoke LLM through server actions instead of using a route, we do not need to be compatible with other frontends and hence can spare the http overhead.
 
 ## Deploy on Vercel
 
