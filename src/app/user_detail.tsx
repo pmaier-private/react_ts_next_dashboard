@@ -25,11 +25,19 @@ export default function UserDetail({
     title?: string;
 }): JSX.Element {
     const [state, setState] = useState<State>({ status: "loading" });
+    const [trackedUserId, setTrackedUserId] = useState(userId);
+
+    // Reset to loading during render when userId prop changes.
+    // This is the React-recommended pattern for adjusting state on prop changes
+    // without using a synchronous setState inside an effect.
+    // See: https://react.dev/learn/you-might-not-need-an-effect#adjusting-some-state-when-a-prop-changes
+    if (trackedUserId !== userId) {
+        setTrackedUserId(userId);
+        setState({ status: "loading" });
+    }
 
     useEffect(() => {
         let isActive = true;
-
-        setState({ status: "loading" });
 
         fetchFromJsonPlaceholder<User>(`users/${userId}`)
             .then((data) => {
