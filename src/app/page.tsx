@@ -1,3 +1,4 @@
+import Link from "next/link";
 import UsersComponent from "./users";
 import UserDetail from "./user_detail";
 
@@ -31,14 +32,22 @@ export default async function Home({ searchParams }: HomeProps) {
                     <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
                         Paul Maier -- Learning React Dashboard
                     </h1>
-                    <a
-                        className="inline-flex items-center rounded-full border border-zinc-900 bg-zinc-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-zinc-700 dark:border-zinc-100 dark:bg-zinc-100 dark:text-black dark:hover:bg-zinc-300"
-                        href="https://github.com/pmaier-private/react_ts_next_dashboard"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        view github repo of this project
-                    </a>
+                    <div className="flex flex-wrap gap-3">
+                        <a
+                            className="inline-flex items-center rounded-full border border-zinc-900 bg-zinc-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-zinc-700 dark:border-zinc-100 dark:bg-zinc-100 dark:text-black dark:hover:bg-zinc-300"
+                            href="https://github.com/pmaier-private/react_ts_next_dashboard"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            view github repo of this project
+                        </a>
+                        <Link
+                            href="/chat"
+                            className="inline-flex items-center rounded-full border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-700 transition hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                        >
+                            AI Chat →
+                        </Link>
+                    </div>
                 </div>
                 <UsersComponent selectedUserId={selectedUserId} />
                 <section className="grid w-full grid-cols-1 gap-6 md:grid-cols-2">
