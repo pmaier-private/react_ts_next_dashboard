@@ -3,6 +3,8 @@ This is my project to learn how to build frontends using React, Typescript and N
 
 It features a simple list displaying user information from jsonplaceholder. A detail section displays user no. 3 on the left, and the currently selected user on the right. A simple form can be filled, but has no other function yet.
 
+I also added an OpenAI-powered chatbot for exploring data from a dental software system (data currently mocked). The bot can query the data using a special query tool.
+
 ## Design
 
 ### endpoint of data access API
